@@ -1,95 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planetary Seismology Analysis</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Seismic Detection Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
-
-<body>
-    <header>
-        <div class="container">
-            <h1>Planetary Seismology Analysis</h1>
-            <nav>
-                <ul id="nav-list">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#data">Data</a></li>
-                    <li><a href="#analysis">Analysis</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button id="mobile-menu" class="menu-toggle">☰</button>
-            <button id="toggle-dark-mode" aria-label="Toggle dark mode">🌙</button>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold text-center mt-4">Seismic Detection Across the Solar System</h1>
+        
+        <div class="text-center mb-3">
+            <div id="dark-mode-toggle" class="toggle-button">
+                <span id="toggle-icon" class="text-3xl">🌙</span>
+            </div>
         </div>
-    </header>
 
-    <main>
-        <section id="about" class="section fade-in-up">
-            <div class="container">
-                <h2>About the Project</h2>
-                <p>
-                    Our mission is to analyze seismic data from planetary missions, specifically from Apollo and Mars InSight.
-                    We aim to identify seismic events and contribute to the understanding of planetary seismology.
-                </p>
-            </div>
-        </section>
-
-        <section id="data" class="section fade-in-up parallax-bg">
-            <div class="container">
-                <h2>Data Sources</h2>
-                <p>We utilize various datasets from the Apollo missions and Mars InSight, including:</p>
-                <ul>
-                    <li>Apollo seismic records</li>
-                    <li>Mars InSight seismic records</li>
-                    <li>Other relevant datasets</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="analysis" class="section fade-in-up">
-            <div class="container">
-                <h2>Data Analysis</h2>
-                <p>
-                    We are exploring different methodologies, including traditional signal processing and machine learning techniques,
-                    to identify and analyze seismic events.
-                </p>
-                <p>Join us as we explore the data and discover insights!</p>
-            </div>
-        </section>
-
-        <section id="contact" class="section fade-in-up">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <p>If you have any questions or would like to collaborate, please reach out!</p>
-                <form>
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder=" " required>
-                        <label for="name">Your Name</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder=" " required>
-                        <label for="email">Your Email</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" placeholder=" " required></textarea>
-                        <label for="message">Your Message</label>
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Planetary Seismology Analysis. All rights reserved.</p>
+        <div class="text-center mb-3">
+            <select id="data-type" class="form-select w-1/2 p-2 border border-gray-400 rounded-md shadow-sm">
+                <option value="earth">Earth Data</option>
+                <option value="mars">Mars Data</option>
+                <option value="moon">Moon Data</option>
+            </select>
         </div>
-    </footer>
+
+        <section id="earth-section" class="mb-6">
+            <h2 class="mt-4 text-2xl font-semibold">Earth Seismic Data</h2>
+
+            <div id="earth-map" class="mb-4" style="height: 400px;"></div>
+
+            <div class="data-section mb-4">
+                <h3 class="text-lg font-medium">Past 5 Hours (5-Minute Intervals)</h3>
+                <div id="earth-1min" class="graph-container h-80"></div> 
+            </div>
+
+            <div class="data-section mb-4">
+                <h3 class="text-lg font-medium">Past 24 Hours (10-Minute Intervals)</h3>
+                <div id="earth-10min" class="graph-container h-80"></div> 
+
+            <div class="data-section mb-4">
+                <h3 class="text-lg font-medium">Past 48 Hours (1-Hour Intervals)</h3>
+                <div id="earth-1hour" class="graph-container h-80"></div> 
+        </section>
+
+        <section id="mars-section" style="display: none;">
+            <h2 class="mt-4 text-2xl font-semibold">Mars Seismic Data</h2>
+
+            <div class="data-section mb-4">
+                <h3 class="text-lg font-medium">Past 5 Hours (5-Minute Intervals)</h3>
+                <div id="mars-1min" class="graph-container h-80"></div> 
+            </div>
+
+            <div class="data-section mb-4">
+                <h3 class="text-lg font-medium">Past 24 Hours (10-Minute Intervals)</h3>
+                <div id="mars-10min" class="graph-container h-80"></div> 
+            </div>
+
+            <div class="data-section mb-4">
+                <h3 class="text-lg font-medium">Past 48 Hours (1-Hour Intervals)</h3>
+                <div id="mars-1hour" class="graph-container h-80"></div>
+            </div>
+        </section>
+
+        <section id="moon-section" style="display: none;">
+            <h2 class="mt-4 text-2xl font-semibold">Moon Seismic Data</h2>
+
+            <div class="data-section mb-4">
+                <h3 class="text-lg font-medium">Past 5 Hours (5-Minute Intervals)</h3>
+                <div id="moon-1min" class="graph-container h-80"></div>
+
+            <div class="data-section mb-4">
+                <h3 class="text-lg font-medium">Past 24 Hours (10-Minute Intervals)</h3>
+                <div id="moon-10min" class="graph-container h-80"></div> 
+
+            <div class="data-section mb-4">
+                <h3 class="text-lg font-medium">Past 48 Hours (1-Hour Intervals)</h3>
+                <div id="moon-1hour" class="graph-container h-80"></div>
+            </div>
+        </section>
+    </div>
 
     <script src="script.js"></script>
 </body>
-
 </html>
