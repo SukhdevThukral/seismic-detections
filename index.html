@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <title>Seismic Detection Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Tailwind CSS for styling -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Plotly.js for data visualization -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <!-- Leaflet.js for maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
@@ -50,13 +47,12 @@
                 <div id="earth-1hour" class="graph-container h-80"></div>
             </div>
 
-            <!-- Data Interpretation for Earth -->
             <section class="mb-6">
                 <h2 class="mt-4 text-lg font-semibold">How the Data is Interpreted</h2>
                 <h3 class="text-md font-medium">1. Fourier Transform (FFT)</h3>
                 <p><strong>Purpose:</strong> Converts time signals into frequency data to find seismic signals amid noise.</p>
                 <p><strong>Results Interpretation:</strong></p>
-                <img src="img4.png" alt="Multi-Resolution Analysis" class="my-2">
+                <img src="img4.png" alt="Frequency Spectrum" class="my-2">
                 <ul>
                     <li><strong>Frequency Spectrum:</strong> Displays amplitude of frequencies; peaks indicate dominant frequencies.</li>
                     <li><strong>Noise Identification:</strong> Helps isolate seismic events from background noise.</li>
@@ -66,7 +62,7 @@
                 <h3 class="text-md font-medium">2. Wavelet Transform (CWT and DWT)</h3>
                 <p><strong>Purpose:</strong> Analyzes seismic events across frequency bands to extract seismic signals.</p>
                 <p><strong>Results Interpretation:</strong></p>
-                <img src="img3.png" alt="Multi-Resolution Analysis" class="my-2">
+                <img src="img3.png" alt="Time-Frequency Representation" class="my-2">
                 <ul>
                     <li><strong>Time-Frequency Representation:</strong> Shows how frequency components change over time.</li>
                     <li><strong>Multi-Resolution Analysis:</strong> Detects transient features in the signal.</li>
@@ -76,7 +72,7 @@
                 <h3 class="text-md font-medium">3. Bandpass Filtering</h3>
                 <p><strong>Purpose:</strong> Removes high-frequency noise and low-frequency drift from signals.</p>
                 <p><strong>Results Interpretation:</strong></p>
-                <img src="img2.png" alt="Multi-Resolution Analysis" class="my-2">
+                <img src="img2.png" alt="Cleaned Signal" class="my-2">
                 <ul>
                     <li><strong>Cleaned Signal:</strong> Enhances clarity by filtering out unwanted frequencies.</li>
                     <li><strong>Event Visibility:</strong> Makes significant seismic events easier to identify.</li>
@@ -86,7 +82,7 @@
                 <h3 class="text-md font-medium">4. Envelope Detection</h3>
                 <p><strong>Purpose:</strong> Highlights potential seismic events by analyzing signal amplitudes.</p>
                 <p><strong>Results Interpretation:</strong></p>
-                <img src="img1.png" alt="Multi-Resolution Analysis" class="my-2">
+                <img src="img1.png" alt="Amplitude Envelope" class="my-2">
                 <ul>
                     <li><strong>Amplitude Envelope:</strong> Represents the signal's instantaneous amplitude.</li>
                     <li><strong>Event Detection:</strong> Helps detect the timing and duration of seismic events.</li>
@@ -112,50 +108,6 @@
                 <h3 class="text-lg font-medium">Past 48 Hours (1-Hour Intervals)</h3>
                 <div id="mars-1hour" class="graph-container h-80"></div>
             </div>
-
-            <!-- Data Interpretation for Mars -->
-            <section class="mb-6">
-                <h2 class="mt-4 text-lg font-semibold">How the Data is Interpreted</h2>
-                <h3 class="text-md font-medium">1. Fourier Transform (FFT)</h3>
-                <p><strong>Purpose:</strong> Converts time signals into frequency data to find seismic signals amid noise.</p>
-                <p><strong>Results Interpretation:</strong></p>
-                <img src="img4.png" alt="Multi-Resolution Analysis" class="my-2">
-                <ul>
-                    <li><strong>Frequency Spectrum:</strong> Displays amplitude of frequencies; peaks indicate dominant frequencies.</li>
-                    <li><strong>Noise Identification:</strong> Helps isolate seismic events from background noise.</li>
-                    <li><strong>Event Characterization:</strong> Identifies seismic events by their unique frequency signatures.</li>
-                </ul>
-
-                <h3 class="text-md font-medium">2. Wavelet Transform (CWT and DWT)</h3>
-                <p><strong>Purpose:</strong> Analyzes seismic events across frequency bands to extract seismic signals.</p>
-                <p><strong>Results Interpretation:</strong></p>
-                <img src="img3.png" alt="Multi-Resolution Analysis" class="my-2">
-                <ul>
-                    <li><strong>Time-Frequency Representation:</strong> Shows how frequency components change over time.</li>
-                    <li><strong>Multi-Resolution Analysis:</strong> Detects transient features in the signal.</li>
-                    <li><strong>Event Detection:</strong> Locates seismic activity at specific times and frequencies.</li>
-                </ul>
-
-                <h3 class="text-md font-medium">3. Bandpass Filtering</h3>
-                <p><strong>Purpose:</strong> Removes high-frequency noise and low-frequency drift from signals.</p>
-                <p><strong>Results Interpretation:</strong></p>
-                <img src="img2.png" alt="Multi-Resolution Analysis" class="my-2">
-                <ul>
-                    <li><strong>Cleaned Signal:</strong> Enhances clarity by filtering out unwanted frequencies.</li>
-                    <li><strong>Event Visibility:</strong> Makes significant seismic events easier to identify.</li>
-                    <li><strong>Parameter Optimization:</strong> Allows adjustments to cutoff frequencies for specific analyses.</li>
-                </ul>
-
-                <h3 class="text-md font-medium">4. Envelope Detection</h3>
-                <p><strong>Purpose:</strong> Highlights potential seismic events by analyzing signal amplitudes.</p>
-                <p><strong>Results Interpretation:</strong></p>
-                <img src="img1.png" alt="Multi-Resolution Analysis" class="my-2">
-                <ul>
-                    <li><strong>Amplitude Envelope:</strong> Represents the signal's instantaneous amplitude.</li>
-                    <li><strong>Event Detection:</strong> Helps detect the timing and duration of seismic events.</li>
-                    <li><strong>Noise Suppression:</strong> Reduces background noise, making key features clearer.</li>
-                </ul>
-            </section>
         </section>
 
         <!-- Moon Seismic Data -->
@@ -175,50 +127,6 @@
                 <h3 class="text-lg font-medium">Past 48 Hours (1-Hour Intervals)</h3>
                 <div id="moon-1hour" class="graph-container h-80"></div>
             </div>
-
-            <!-- Data Interpretation for Moon -->
-            <section class="mb-6">
-                <h2 class="mt-4 text-lg font-semibold">How the Data is Interpreted</h2>
-                <h3 class="text-md font-medium">1. Fourier Transform (FFT)</h3>
-                <p><strong>Purpose:</strong> Converts time signals into frequency data to find seismic signals amid noise.</p>
-                <p><strong>Results Interpretation:</strong></p>
-                <img src="img4.png" alt="Multi-Resolution Analysis" class="my-2">
-                <ul>
-                    <li><strong>Frequency Spectrum:</strong> Displays amplitude of frequencies; peaks indicate dominant frequencies.</li>
-                    <li><strong>Noise Identification:</strong> Helps isolate seismic events from background noise.</li>
-                    <li><strong>Event Characterization:</strong> Identifies seismic events by their unique frequency signatures.</li>
-                </ul>
-
-                <h3 class="text-md font-medium">2. Wavelet Transform (CWT and DWT)</h3>
-                <p><strong>Purpose:</strong> Analyzes seismic events across frequency bands to extract seismic signals.</p>
-                <p><strong>Results Interpretation:</strong></p>
-                <img src="img3.png" alt="Multi-Resolution Analysis" class="my-2">
-                <ul>
-                    <li><strong>Time-Frequency Representation:</strong> Shows how frequency components change over time.</li>
-                    <li><strong>Multi-Resolution Analysis:</strong> Detects transient features in the signal.</li>
-                    <li><strong>Event Detection:</strong> Locates seismic activity at specific times and frequencies.</li>
-                </ul>
-
-                <h3 class="text-md font-medium">3. Bandpass Filtering</h3>
-                <p><strong>Purpose:</strong> Removes high-frequency noise and low-frequency drift from signals.</p>
-                <p><strong>Results Interpretation:</strong></p>
-                <img src="img2.png" alt="Multi-Resolution Analysis" class="my-2">
-                <ul>
-                    <li><strong>Cleaned Signal:</strong> Enhances clarity by filtering out unwanted frequencies.</li>
-                    <li><strong>Event Visibility:</strong> Makes significant seismic events easier to identify.</li>
-                    <li><strong>Parameter Optimization:</strong> Allows adjustments to cutoff frequencies for specific analyses.</li>
-                </ul>
-
-                <h3 class="text-md font-medium">4. Envelope Detection</h3>
-                <p><strong>Purpose:</strong> Highlights potential seismic events by analyzing signal amplitudes.</p>
-                <p><strong>Results Interpretation:</strong></p>
-                <img src="img1.png" alt="Multi-Resolution Analysis" class="my-2">
-                <ul>
-                    <li><strong>Amplitude Envelope:</strong> Represents the signal's instantaneous amplitude.</li>
-                    <li><strong>Event Detection:</strong> Helps detect the timing and duration of seismic events.</li>
-                    <li><strong>Noise Suppression:</strong> Reduces background noise, making key features clearer.</li>
-                </ul>
-            </section>
         </section>
     </div>
 
